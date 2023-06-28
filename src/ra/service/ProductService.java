@@ -1,5 +1,6 @@
 package ra.service;
 
+import ra.model.Catalog;
 import ra.model.Product;
 
 import java.util.ArrayList;
@@ -23,14 +24,15 @@ public class ProductService implements IService<Product, String> {
     }
 
     @Override
-    public void findById(String productId) {
+    public Catalog findById(String productId) {
         for (Product product : productList) {
             if (product.getProductId().equals(productId)) {
                 System.out.println("Tìm thấy sản phẩm: " + product.toString());
-                return;
+                return null;
             }
         }
         System.out.println("Sản phẩm có ID " + productId + " không tìm thấy.");
+        return null;
     }
 
     @Override

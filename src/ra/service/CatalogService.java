@@ -23,15 +23,26 @@ public class CatalogService implements IService<Catalog, Integer> {
     }
 
     @Override
-    public void findById(Integer catalogId) {
+    public Catalog findById(Integer catalogId) {
+        Catalog existingCatalog = null;
         for (Catalog catalog : catalogList) {
             if (catalog.getCatalogId() == catalogId) {
-                System.out.println("Danh mục đã tìm thấy: " + catalog.toString());
-                return;
+                existingCatalog = catalog;
+                break;
             }
         }
-        System.out.println("Danh mục có ID " + catalogId + " không tìm thấy.");
+
+        if (existingCatalog != null) {
+            System.out.println("Danh mục đã tìm thấy: " + existingCatalog.toString());
+        } else if (existingCatalog == null) {
+            System.out.println("Danh mục có ID " + catalogId + " không tìm thấy.");
+        } else {
+            System.out.println("");
+        }
+
+        return existingCatalog;
     }
+
 
     @Override
     public void delete(Integer catalogId) {

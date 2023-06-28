@@ -110,11 +110,17 @@ public class BookManagement {
             System.out.print("Tên danh mục: ");
             String catalogName = scanner.nextLine();
 
-            Catalog catalog = new Catalog(catalogId, catalogName);
-            catalogService.save(catalog);
-            System.out.println("Thêm danh mục thành công.");
+            Catalog existingCatalog = catalogService.findById(catalogId);
+            if (existingCatalog != null) {
+                System.out.println("Danh mục với ID " + catalogId + " đã tồn tại. Không thể thêm danh mục mới.");
+            } else {
+                Catalog catalog = new Catalog(catalogId, catalogName);
+                catalogService.save(catalog);
+                System.out.println("Thêm danh mục thành công.");
+            }
         }
     }
+
 
     private static void displayAllCatalogs() {
         List<Catalog> catalogs = catalogService.getAll();
