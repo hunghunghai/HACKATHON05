@@ -387,7 +387,7 @@ public class BookManagement {
             System.out.println("Nhập thông tin mới cho sản phẩm:");
             System.out.print("Tên sản phẩm: ");
             String newProductName = scanner.nextLine();
-            System.out.print("Gái sản phẩm: ");
+            System.out.print("Giá sản phẩm: ");
             double newProductPrice = scanner.nextDouble();
             scanner.nextLine(); // Consume newline character
             System.out.print("Miêu tả: ");
